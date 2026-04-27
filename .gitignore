@@ -1,0 +1,10 @@
+.env
+/audio_records
+/__pycache__
+.venv
+/.vscode
+CLAUDE.md
+.claude/
+api/__pycache__/
+services/__pycache__/
+frontend/__pycache__/

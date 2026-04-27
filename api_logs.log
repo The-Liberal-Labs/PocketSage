@@ -474,3 +474,964 @@
 2025-09-14 15:57:57,371 - main - INFO - Database connected successfully
 2025-09-14 15:58:17,070 - main - INFO - Shutting down SageAI Medical Advisor API...
 2025-09-14 15:58:17,072 - database - INFO - MongoDB connection closed.
+2026-01-10 17:57:34,363 - main - INFO - Including API routers...
+2026-01-10 17:57:34,396 - main - INFO - All routers included successfully
+2026-01-10 17:57:34,399 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 17:57:34,419 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 17:57:34,419 - main - INFO - Database connected successfully
+2026-01-10 17:58:40,540 - main - INFO - Request: POST http://127.0.0.1:8000/auth/signup
+2026-01-10 17:58:41,917 - main - INFO - Response: 201 - 1.3771s
+2026-01-10 17:58:41,921 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-10 17:58:42,422 - main - INFO - Response: 200 - 0.5003s
+2026-01-10 17:58:42,425 - main - INFO - Request: GET http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:58:42,438 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:13,867 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:13,874 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:29,930 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:29,934 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:31,152 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:31,155 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:40,851 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:40,855 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:40,997 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:41,003 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:41,176 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:41,180 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:42,051 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:42,056 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:43,183 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 17:59:43,187 - main - ERROR - Global exception on http://127.0.0.1:8000/chat/history: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 17:59:53,912 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 17:59:53,917 - main - ERROR - Global exception on http://127.0.0.1:8000/users/me/profile: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+Traceback (most recent call last):
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/home/istac/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/main.py", line 55, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/routing.py", line 416, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/fastapi/dependencies/utils.py", line 676, in solve_dependencies
+    solved = await call(**solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/istac/Documents/PocketSage/auth.py", line 57, in get_current_user
+    return UserInDB(**user_data)
+  File "/home/istac/anaconda3/lib/python3.13/site-packages/pydantic/main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for UserInDB
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('696245f930f3f375b58cc97a'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-01-10 18:00:26,170 - main - INFO - Shutting down SageAI Medical Advisor API...
+2026-01-10 18:00:26,175 - database - INFO - MongoDB connection closed.
+2026-01-10 18:00:30,667 - main - INFO - Including API routers...
+2026-01-10 18:00:30,710 - main - INFO - All routers included successfully
+2026-01-10 18:00:30,713 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 18:00:30,742 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 18:00:30,742 - main - INFO - Database connected successfully
+2026-01-10 18:00:39,273 - main - INFO - Shutting down SageAI Medical Advisor API...
+2026-01-10 18:00:39,277 - database - INFO - MongoDB connection closed.
+2026-01-10 18:00:43,344 - main - INFO - Including API routers...
+2026-01-10 18:00:43,387 - main - INFO - All routers included successfully
+2026-01-10 18:00:43,390 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 18:00:43,417 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 18:00:43,417 - main - INFO - Database connected successfully
+2026-01-10 18:00:46,488 - main - INFO - Including API routers...
+2026-01-10 18:00:46,527 - main - INFO - All routers included successfully
+2026-01-10 18:00:46,530 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 18:00:46,556 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 18:00:46,556 - main - INFO - Database connected successfully
+2026-01-10 18:00:49,982 - main - INFO - Including API routers...
+2026-01-10 18:00:50,037 - main - INFO - All routers included successfully
+2026-01-10 18:00:50,041 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 18:00:50,070 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 18:00:50,070 - main - INFO - Database connected successfully
+2026-01-10 18:03:08,819 - main - INFO - Shutting down SageAI Medical Advisor API...
+2026-01-10 18:03:08,823 - database - INFO - MongoDB connection closed.
+2026-01-10 18:03:19,113 - main - INFO - Including API routers...
+2026-01-10 18:03:19,148 - main - INFO - All routers included successfully
+2026-01-10 18:03:19,151 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-10 18:03:19,169 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-10 18:03:19,169 - main - INFO - Database connected successfully
+2026-01-10 18:04:08,593 - main - INFO - Request: POST http://127.0.0.1:8000/auth/signup
+2026-01-10 18:04:08,607 - main - INFO - Response: 409 - 0.0140s
+2026-01-10 18:04:19,023 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-10 18:04:19,549 - main - INFO - Response: 200 - 0.5254s
+2026-01-10 18:04:19,551 - main - INFO - Request: GET http://127.0.0.1:8000/users/me/profile
+2026-01-10 18:04:19,555 - main - INFO - Response: 200 - 0.0037s
+2026-01-10 18:04:19,593 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:04:19,599 - main - INFO - Response: 200 - 0.0057s
+2026-01-10 18:04:56,775 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-10 18:04:56,938 - main - INFO - Response: 200 - 0.1630s
+2026-01-10 18:05:02,442 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:05:02,446 - main - INFO - Response: 200 - 0.0044s
+2026-01-10 18:05:04,924 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:05:04,929 - main - INFO - Response: 200 - 0.0048s
+2026-01-10 18:05:48,982 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/
+2026-01-10 18:05:49,343 - main - INFO - Response: 201 - 0.3603s
+2026-01-10 18:05:49,384 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:05:49,390 - main - INFO - Response: 200 - 0.0063s
+2026-01-10 18:06:01,579 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:06:01,584 - main - INFO - Response: 200 - 0.0047s
+2026-01-10 18:06:01,627 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:06:01,635 - main - INFO - Response: 200 - 0.0072s
+2026-01-10 18:07:17,768 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:17,774 - main - INFO - Response: 200 - 0.0054s
+2026-01-10 18:07:17,838 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:17,845 - main - INFO - Response: 200 - 0.0064s
+2026-01-10 18:07:23,943 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:23,949 - main - INFO - Response: 200 - 0.0063s
+2026-01-10 18:07:24,023 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:07:24,032 - main - INFO - Response: 200 - 0.0090s
+2026-01-10 18:07:25,541 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:07:25,547 - main - INFO - Response: 200 - 0.0052s
+2026-01-10 18:07:36,593 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:07:36,599 - main - INFO - Response: 200 - 0.0059s
+2026-01-10 18:07:36,605 - main - INFO - Request: POST http://127.0.0.1:8000/chat/
+2026-01-10 18:07:36,611 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-10 18:07:38,878 - services.gemini_service - INFO - Successfully received response from Gemini API.
+2026-01-10 18:07:38,925 - main - INFO - Response: 200 - 2.3196s
+2026-01-10 18:07:38,973 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:07:38,978 - main - INFO - Response: 200 - 0.0053s
+2026-01-10 18:07:52,973 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:52,978 - main - INFO - Response: 200 - 0.0054s
+2026-01-10 18:07:56,735 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:56,741 - main - INFO - Response: 200 - 0.0054s
+2026-01-10 18:07:56,789 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:07:56,795 - main - INFO - Response: 200 - 0.0062s
+2026-01-10 18:08:13,483 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:08:13,488 - main - INFO - Response: 200 - 0.0053s
+2026-01-10 18:08:42,747 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:08:42,760 - main - INFO - Response: 200 - 0.0131s
+2026-01-10 18:08:42,967 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/696247a4d2877cf6194f159d/process
+2026-01-10 18:08:58,966 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+2026-01-10 18:08:59,261 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-01-10 18:08:59,538 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/f9a9fbc6-ec72-4479-924d-4620f0d48b78 "HTTP/1.1 200 OK"
+2026-01-10 18:09:02,915 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/f9a9fbc6-ec72-4479-924d-4620f0d48b78 "HTTP/1.1 200 OK"
+2026-01-10 18:09:06,288 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/f9a9fbc6-ec72-4479-924d-4620f0d48b78 "HTTP/1.1 200 OK"
+2026-01-10 18:09:09,614 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/f9a9fbc6-ec72-4479-924d-4620f0d48b78 "HTTP/1.1 200 OK"
+2026-01-10 18:09:13,448 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/f9a9fbc6-ec72-4479-924d-4620f0d48b78 "HTTP/1.1 200 OK"
+2026-01-10 18:09:15,499 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-10 18:09:15,500 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-10 18:09:24,893 - main - INFO - Response: 200 - 41.9256s
+2026-01-10 18:09:26,960 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:09:26,968 - main - INFO - Response: 200 - 0.0080s
+2026-01-10 18:09:26,988 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/696247a4d2877cf6194f159d/audio
+2026-01-10 18:09:27,000 - main - INFO - Response: 200 - 0.0124s
+2026-01-10 18:10:54,661 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:10:54,668 - main - INFO - Response: 200 - 0.0067s
+2026-01-10 18:10:54,679 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/696247a4d2877cf6194f159d/audio
+2026-01-10 18:10:54,684 - main - INFO - Response: 200 - 0.0050s
+2026-01-10 18:10:54,854 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:10:54,859 - main - INFO - Response: 200 - 0.0053s
+2026-01-10 18:11:46,238 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:11:46,245 - main - INFO - Response: 200 - 0.0064s
+2026-01-10 18:11:46,309 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:11:46,316 - main - INFO - Response: 200 - 0.0065s
+2026-01-10 18:25:05,081 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:25:05,089 - main - INFO - Response: 200 - 0.0081s
+2026-01-10 18:25:06,861 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:25:06,866 - main - INFO - Response: 200 - 0.0056s
+2026-01-10 18:25:08,927 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:25:08,933 - main - INFO - Response: 200 - 0.0066s
+2026-01-10 18:25:09,010 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:25:09,018 - main - INFO - Response: 200 - 0.0075s
+2026-01-10 18:25:09,035 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/696247a4d2877cf6194f159d/audio
+2026-01-10 18:25:09,044 - main - INFO - Response: 200 - 0.0089s
+2026-01-10 18:26:39,502 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:26:39,508 - main - INFO - Response: 200 - 0.0059s
+2026-01-10 18:26:39,520 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/696247a4d2877cf6194f159d/audio
+2026-01-10 18:26:39,527 - main - INFO - Response: 200 - 0.0063s
+2026-01-10 18:26:39,786 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:26:39,796 - main - INFO - Response: 200 - 0.0094s
+2026-01-10 18:26:42,524 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-10 18:26:42,529 - main - INFO - Response: 200 - 0.0057s
+2026-01-10 18:26:42,600 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:26:42,607 - main - INFO - Response: 200 - 0.0070s
+2026-01-10 18:26:45,622 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-10 18:26:45,627 - main - INFO - Response: 200 - 0.0054s
+2026-01-10 18:32:03,547 - main - INFO - Shutting down SageAI Medical Advisor API...
+2026-01-10 18:32:03,549 - database - INFO - MongoDB connection closed.
+2026-01-18 21:42:00,860 - main - INFO - Including API routers...
+2026-01-18 21:42:00,874 - main - INFO - All routers included successfully
+2026-01-18 21:42:00,875 - main - INFO - Starting SageAI Medical Advisor API...
+2026-01-18 21:42:00,882 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-01-18 21:42:00,883 - main - INFO - Database connected successfully
+2026-01-18 21:42:38,899 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-18 21:42:39,148 - main - INFO - Response: 401 - 0.2490s
+2026-01-18 21:42:45,291 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-18 21:42:45,557 - main - INFO - Response: 401 - 0.2661s
+2026-01-18 21:42:47,209 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-18 21:42:47,469 - main - INFO - Response: 401 - 0.2605s
+2026-01-18 21:43:27,604 - main - INFO - Request: POST http://127.0.0.1:8000/auth/signup
+2026-01-18 21:43:29,521 - main - INFO - Response: 201 - 1.9168s
+2026-01-18 21:43:29,524 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-18 21:43:29,765 - main - INFO - Response: 200 - 0.2412s
+2026-01-18 21:43:29,767 - main - INFO - Request: GET http://127.0.0.1:8000/users/me/profile
+2026-01-18 21:43:29,778 - main - INFO - Response: 200 - 0.0113s
+2026-01-18 21:44:13,974 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-01-18 21:44:14,111 - main - INFO - Response: 200 - 0.1365s
+2026-01-18 21:44:15,677 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-18 21:44:15,684 - main - INFO - Response: 200 - 0.0067s
+2026-01-18 21:44:29,494 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:44:29,511 - main - INFO - Response: 200 - 0.0167s
+2026-01-18 21:44:32,785 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:44:32,789 - main - INFO - Response: 200 - 0.0041s
+2026-01-18 21:44:32,826 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-18 21:44:32,829 - main - INFO - Response: 200 - 0.0030s
+2026-01-18 21:45:27,606 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-01-18 21:45:27,859 - main - INFO - Response: 200 - 0.2528s
+2026-01-18 21:45:27,864 - main - INFO - Request: GET http://127.0.0.1:8000/users/me/profile
+2026-01-18 21:45:27,866 - main - INFO - Response: 200 - 0.0018s
+2026-01-18 21:45:27,902 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-18 21:45:27,906 - main - INFO - Response: 200 - 0.0033s
+2026-01-18 21:45:29,334 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:45:29,337 - main - INFO - Response: 200 - 0.0028s
+2026-01-18 21:45:33,587 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:45:33,592 - main - INFO - Response: 200 - 0.0051s
+2026-01-18 21:45:33,638 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-18 21:45:33,642 - main - INFO - Response: 200 - 0.0038s
+2026-01-18 21:45:38,672 - main - INFO - Request: POST http://127.0.0.1:8000/hospitals/nearby
+2026-01-18 21:45:38,694 - api.hospitals_router - INFO - Hospital search request from user thatiayyappaswami@gmail.com for location 17.3768704, 78.5383424
+2026-01-18 21:45:38,694 - api.hospitals_router - INFO - Searching for hospitals near 17.3768704, 78.5383424 with radius 0.02
+2026-01-18 21:45:38,694 - api.hospitals_router - INFO - Overpass query: 
+    [out:json][timeout:30];
+    (
+      node["amenity"~"hospital|clinic|doctors|pharmacy"](17.356870400000002,78.51834240000001,17.3968704,78.5583424);
+      way["amenity"~"hospital|clinic|doctors|pharmacy"](17.356870400000002,78.51834240000001,17.3968704,78.5583424);
+      relation["amenity"~"hospital|clinic|doctors|pharmacy"](17.356870400000002,78.51834240000001,17.3968704,78.5583424);
+    );
+    out center;
+    
+2026-01-18 21:45:43,706 - api.hospitals_router - ERROR - Overpass API request failed: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter?data=%0A++++%5Bout%3Ajson%5D%5Btimeout%3A30%5D%3B%0A++++%28%0A++++++node%5B%22amenity%22~%22hospital%7Cclinic%7Cdoctors%7Cpharmacy%22%5D%2817.356870400000002%2C78.51834240000001%2C17.3968704%2C78.5583424%29%3B%0A++++++way%5B%22amenity%22~%22hospital%7Cclinic%7Cdoctors%7Cpharmacy%22%5D%2817.356870400000002%2C78.51834240000001%2C17.3968704%2C78.5583424%29%3B%0A++++++relation%5B%22amenity%22~%22hospital%7Cclinic%7Cdoctors%7Cpharmacy%22%5D%2817.356870400000002%2C78.51834240000001%2C17.3968704%2C78.5583424%29%3B%0A++++%29%3B%0A++++out+center%3B%0A++++
+2026-01-18 21:45:43,707 - main - INFO - Response: 502 - 5.0344s
+2026-01-18 21:45:52,076 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-01-18 21:45:52,080 - main - INFO - Response: 200 - 0.0042s
+2026-01-18 21:45:53,173 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:45:53,177 - main - INFO - Response: 200 - 0.0039s
+2026-01-18 21:46:18,306 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/
+2026-01-18 21:46:18,607 - main - INFO - Response: 201 - 0.3014s
+2026-01-18 21:46:18,645 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:46:18,648 - main - INFO - Response: 200 - 0.0032s
+2026-01-18 21:46:24,674 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:46:24,680 - main - INFO - Response: 200 - 0.0059s
+2026-01-18 21:46:24,726 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:46:24,738 - main - INFO - Response: 200 - 0.0119s
+2026-01-18 21:49:21,091 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:49:21,095 - main - INFO - Response: 200 - 0.0031s
+2026-01-18 21:50:06,036 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:50:06,041 - main - INFO - Response: 200 - 0.0047s
+2026-01-18 21:50:06,125 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/696d07523abb873c011edd8d/process
+2026-01-18 21:50:11,699 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+2026-01-18 21:50:12,003 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-01-18 21:50:12,280 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/6bbca539-6cc3-4aa9-924c-8bdca8565073 "HTTP/1.1 200 OK"
+2026-01-18 21:50:15,557 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/6bbca539-6cc3-4aa9-924c-8bdca8565073 "HTTP/1.1 200 OK"
+2026-01-18 21:50:18,838 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/6bbca539-6cc3-4aa9-924c-8bdca8565073 "HTTP/1.1 200 OK"
+2026-01-18 21:50:22,221 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/6bbca539-6cc3-4aa9-924c-8bdca8565073 "HTTP/1.1 200 OK"
+2026-01-18 21:50:26,066 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/6bbca539-6cc3-4aa9-924c-8bdca8565073 "HTTP/1.1 200 OK"
+2026-01-18 21:50:27,562 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-18 21:50:27,574 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-18 21:50:37,078 - main - INFO - Response: 200 - 30.9533s
+2026-01-18 21:50:39,139 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-01-18 21:50:39,146 - main - INFO - Response: 200 - 0.0068s
+2026-01-18 21:50:39,159 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/696d07523abb873c011edd8d/audio
+2026-01-18 21:50:39,167 - main - INFO - Response: 200 - 0.0084s
+2026-01-18 21:55:37,902 - main - INFO - Shutting down SageAI Medical Advisor API...
+2026-01-18 21:55:37,904 - database - INFO - MongoDB connection closed.
+2026-02-26 18:25:57,129 - main - INFO - Including API routers...
+2026-02-26 18:25:57,142 - main - INFO - All routers included successfully
+2026-02-26 18:25:57,143 - main - INFO - Starting SageAI Medical Advisor API...
+2026-02-26 18:26:02,155 - database - CRITICAL - CRITICAL: Failed to connect to MongoDB at mongodb://localhost:27017. Error: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a042ddec912c1b00d9885f, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-02-26 18:26:02,155 - main - ERROR - Failed to connect to database: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a042ddec912c1b00d9885f, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-02-26 18:28:28,722 - main - INFO - Including API routers...
+2026-02-26 18:28:28,735 - main - INFO - All routers included successfully
+2026-02-26 18:28:28,736 - main - INFO - Starting SageAI Medical Advisor API...
+2026-02-26 18:28:33,752 - database - CRITICAL - CRITICAL: Failed to connect to MongoDB at mongodb://localhost:27017. Error: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a04374ed334c54630c1b15, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-02-26 18:28:33,752 - main - ERROR - Failed to connect to database: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a04374ed334c54630c1b15, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2026-02-26 18:29:28,862 - main - INFO - Including API routers...
+2026-02-26 18:29:28,875 - main - INFO - All routers included successfully
+2026-02-26 18:29:28,876 - main - INFO - Starting SageAI Medical Advisor API...
+2026-02-26 18:29:28,887 - database - INFO - Successfully connected to MongoDB database: 'pocketsage'
+2026-02-26 18:29:28,887 - main - INFO - Database connected successfully
+2026-02-26 18:30:35,752 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-02-26 18:30:35,763 - main - INFO - Response: 401 - 0.0101s
+2026-02-26 18:30:58,113 - main - INFO - Request: POST http://127.0.0.1:8000/auth/signup
+2026-02-26 18:30:59,866 - main - INFO - Response: 201 - 1.7539s
+2026-02-26 18:30:59,868 - main - INFO - Request: POST http://127.0.0.1:8000/auth/login
+2026-02-26 18:31:00,121 - main - INFO - Response: 200 - 0.2526s
+2026-02-26 18:31:00,122 - main - INFO - Request: GET http://127.0.0.1:8000/users/me/profile
+2026-02-26 18:31:00,125 - main - INFO - Response: 200 - 0.0022s
+2026-02-26 18:31:19,824 - main - INFO - Request: PATCH http://127.0.0.1:8000/users/me/profile
+2026-02-26 18:31:19,974 - main - INFO - Response: 200 - 0.1498s
+2026-02-26 18:31:21,759 - main - INFO - Request: GET http://127.0.0.1:8000/chat/history
+2026-02-26 18:31:21,764 - main - INFO - Response: 200 - 0.0056s
+2026-02-26 18:31:23,834 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:31:23,848 - main - INFO - Response: 200 - 0.0141s
+2026-02-26 18:32:03,371 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:03,652 - main - INFO - Response: 201 - 0.2809s
+2026-02-26 18:32:03,677 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:03,680 - main - INFO - Response: 200 - 0.0031s
+2026-02-26 18:32:06,888 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:06,893 - main - INFO - Response: 200 - 0.0053s
+2026-02-26 18:32:06,923 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:06,926 - main - INFO - Response: 200 - 0.0036s
+2026-02-26 18:32:17,370 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:17,373 - main - INFO - Response: 200 - 0.0035s
+2026-02-26 18:32:35,211 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:32:35,217 - main - INFO - Response: 200 - 0.0059s
+2026-02-26 18:32:35,335 - main - INFO - Request: POST http://127.0.0.1:8000/appointments/69a0444b03699c05d27160a9/process
+2026-02-26 18:32:53,087 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+2026-02-26 18:32:53,398 - httpx - INFO - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+2026-02-26 18:32:53,710 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/83d67830-35e5-4f7b-a79f-2835bb157d83 "HTTP/1.1 200 OK"
+2026-02-26 18:32:56,987 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/83d67830-35e5-4f7b-a79f-2835bb157d83 "HTTP/1.1 200 OK"
+2026-02-26 18:33:00,386 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/83d67830-35e5-4f7b-a79f-2835bb157d83 "HTTP/1.1 200 OK"
+2026-02-26 18:33:03,752 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/83d67830-35e5-4f7b-a79f-2835bb157d83 "HTTP/1.1 200 OK"
+2026-02-26 18:33:07,318 - httpx - INFO - HTTP Request: GET https://api.assemblyai.com/v2/transcript/83d67830-35e5-4f7b-a79f-2835bb157d83 "HTTP/1.1 200 OK"
+2026-02-26 18:33:10,004 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-02-26 18:33:10,011 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-02-26 18:33:18,698 - main - INFO - Response: 200 - 43.3631s
+2026-02-26 18:33:20,737 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/
+2026-02-26 18:33:20,753 - main - INFO - Response: 200 - 0.0167s
+2026-02-26 18:33:20,769 - main - INFO - Request: GET http://127.0.0.1:8000/appointments/69a0444b03699c05d27160a9/audio
+2026-02-26 18:33:20,780 - main - INFO - Response: 200 - 0.0116s
